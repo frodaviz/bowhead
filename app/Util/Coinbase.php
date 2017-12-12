@@ -417,13 +417,15 @@ class Coinbase
         $uri = sprintf($uri, $instrument);
         #error_log('get_endpoint : '.$uri);
         $uri = $uri . $extra;
-        $sig = $this->sign($timestamp, $method . $uri . $data, $this->secret);
+        $uri2 = '/v2'.$uri;
+        $sig = $this->sign($timestamp, $method . $uri2 . $data, $this->secret);
 
         $headers = array(
             'User-Agent: GDAX_cl_trader',
             'Content-Type: application/json',
             "CB-ACCESS-KEY: $key",
             "CB-ACCESS-SIGN: $sig",
+            "CB-VERSION: 2017-12-12",
             "CB-ACCESS-TIMESTAMP: $timestamp",
             "CB-ACCESS-PASSPHRASE: $passphrase",
         );
@@ -440,12 +442,12 @@ class Coinbase
      * @return string
      */
     public function sign($timestamp, $data, $secret) {
-        return base64_encode(hash_hmac(
+        print $data;
+        return hash_hmac(
             'sha256',
             $timestamp . $data,
-            base64_decode($secret),
-            true
-        ));
+            $secret
+        );
     }
 
     /**
