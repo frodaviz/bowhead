@@ -28,7 +28,7 @@ def connect_to_stream():
     dotenv.load()
 
     domainDict = { 'live' : 'api-fxtrade.oanda.com',
-               'demo' : 'api-fxpractice.oanda.com' }
+               'demo' : 'api-sandbox.oanda.com' }
 
     # Replace the following variables with your personal values 
     environment = "demo" # Replace this 'live' if you wish to connect to the live environment 
