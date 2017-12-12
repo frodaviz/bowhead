@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 brew install redis
 brew install mysql
 curl -O http://pear.php.net/go-pear.phar

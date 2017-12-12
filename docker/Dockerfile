@@ -63,6 +63,7 @@ RUN usermod -u 1000 www-data
 EXPOSE 8080
 EXPOSE 2049
 EXPOSE 20048
+EXPOSE 3306
 
 #
 # supervisord with nodaemon=true
