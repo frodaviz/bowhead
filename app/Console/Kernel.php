@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\CoinbaseWebsocketCommand::class,
         Commands\OandaStreamCommand::class,
         Commands\ExampleUsageCommand::class,
+        Commands\BittrexPoolCommand::class,
         Commands\ExampleCommand::class,
         Commands\ExampleForexStrategyCommand::class,
         Commands\BitfinexWebsocketETHCommand::class,
