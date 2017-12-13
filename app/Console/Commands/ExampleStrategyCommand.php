@@ -173,8 +173,8 @@ class ExampleCommand extends Command
                     $console->colorize("\nOPENED NEW LONG POSIITION");
                     print_r($position);
                 }
+                sleep(20);
             }
-           sleep(8);
         }
     }
 

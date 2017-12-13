@@ -778,7 +778,7 @@ class Indicators
         if (empty($data)) {
             $data = $this->getRecentData($pair);
         }
-
+//        echo $pair.' '.json_encode($data);
         $adx = trader_adx($data['high'], $data['low'], $data['close'], $period);
         if (empty($adx)) {
             return -9;

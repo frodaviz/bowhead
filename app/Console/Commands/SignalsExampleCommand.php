@@ -52,8 +52,9 @@ class SignalsExampleCommand extends Command {
         stream_set_blocking(STDIN, 0);
 
         while(1){
-			$instruments = ['BTC/USD'];
-			
+            $instruments = ['BITTREX-USDT-LTC', 'BITTREX-USDT-XRP', 'BITTREX-USDT-NEO',
+                'BITTREX-USDT-OMG', 'BITTREX-USDT-ZEC', 'BITTREX-USDT-BTC', 'BITTREX-USDT-ETH', 'BITTREX-USDT-BCC',
+                'BITTREX-USDT-ETC', 'BITTREX-USDT-BTG', 'BITTREX-USDT-DASH', 'BITTREX-USDT-XMR'];
 			$util        = new Util\BrokersUtil();
 			$console     = new \Bowhead\Util\Console();
 			$indicators  = new \Bowhead\Util\Indicators();

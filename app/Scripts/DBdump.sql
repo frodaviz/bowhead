@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `bowhead_ohlc_1m`;
 
 CREATE TABLE `bowhead_ohlc_1m` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `instrument` varchar(10) DEFAULT NULL,
+  `instrument` varchar(20) DEFAULT NULL,
   `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `timeid` bigint(28) DEFAULT NULL,
   `open` float DEFAULT NULL,
@@ -252,7 +252,7 @@ UNLOCK TABLES;
 -- Create syntax for TABLE 'bowhead_ohlc'
 CREATE TABLE `bowhead_ohlc` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `instrument` varchar(10) DEFAULT NULL,
+  `instrument` varchar(20) DEFAULT NULL,
   `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `timeid` bigint(28) DEFAULT NULL,
   `open` float DEFAULT NULL,
@@ -268,7 +268,7 @@ CREATE TABLE `bowhead_ohlc` (
 -- Create syntax for TABLE 'bowhead_ohlc_15m'
 CREATE TABLE `bowhead_ohlc_15m` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `instrument` varchar(10) DEFAULT NULL,
+  `instrument` varchar(20) DEFAULT NULL,
   `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `timeid` bigint(28) DEFAULT NULL,
   `open` float DEFAULT NULL,
@@ -284,7 +284,7 @@ CREATE TABLE `bowhead_ohlc_15m` (
 -- Create syntax for TABLE 'bowhead_ohlc_1h'
 CREATE TABLE `bowhead_ohlc_1h` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `instrument` varchar(10) DEFAULT NULL,
+  `instrument` varchar(20) DEFAULT NULL,
   `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `timeid` bigint(28) DEFAULT NULL,
   `open` float DEFAULT NULL,
@@ -300,7 +300,7 @@ CREATE TABLE `bowhead_ohlc_1h` (
 -- Create syntax for TABLE 'bowhead_ohlc_30m'
 CREATE TABLE `bowhead_ohlc_30m` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `instrument` varchar(10) DEFAULT NULL,
+  `instrument` varchar(20) DEFAULT NULL,
   `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `timeid` bigint(28) DEFAULT NULL,
   `open` float DEFAULT NULL,
@@ -316,7 +316,7 @@ CREATE TABLE `bowhead_ohlc_30m` (
 -- Create syntax for TABLE 'bowhead_ohlc_5m'
 CREATE TABLE `bowhead_ohlc_5m` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `instrument` varchar(10) DEFAULT NULL,
+  `instrument` varchar(20) DEFAULT NULL,
   `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `timeid` bigint(28) DEFAULT NULL,
   `open` float DEFAULT NULL,
@@ -332,7 +332,7 @@ CREATE TABLE `bowhead_ohlc_5m` (
 -- Create syntax for TABLE 'bowhead_ohlc_tick'
 CREATE TABLE `bowhead_ohlc_tick` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `instrument` varchar(10) DEFAULT NULL,
+  `instrument` varchar(20) DEFAULT NULL,
   `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `timeid` bigint(28) DEFAULT NULL,
   `open` float DEFAULT NULL,
@@ -381,7 +381,7 @@ CREATE TABLE `historical` (
 -- Create syntax for TABLE 'symbols'
 CREATE TABLE `symbols` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `symbol` varchar(10) DEFAULT NULL,
+  `symbol` varchar(20) DEFAULT NULL,
   `category` varchar(20) DEFAULT NULL,
   `maximum_leverage` int(11) DEFAULT NULL,
   `maximum_amount` int(11) DEFAULT NULL,
@@ -389,7 +389,7 @@ CREATE TABLE `symbols` (
   `overnight_charge_short_percent` float DEFAULT NULL,
   `decimals` int(11) DEFAULT NULL,
   `timezone` varchar(80) DEFAULT NULL,
-  `timezone_offset` varchar(10) DEFAULT NULL,
+  `timezone_offset` varchar(20) DEFAULT NULL,
   `open_day` varchar(80) DEFAULT NULL,
   `open_time` time DEFAULT NULL,
   `close_day` varchar(80) DEFAULT NULL,
