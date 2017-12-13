@@ -286,7 +286,7 @@ class BitfinexWebsocketCommand extends Command
                          *  [10] => 2007          - low
                          * )*/
                         if ($data[0] == 'ticker') {
-                            #echo "TICKER\n";
+                            echo $msg."\n";
                             if (\Cache::has('bitfinex::ticker::last_price')) {
                                 $last = \Cache::get('bitfinex::ticker::last_price');
                             } else {
