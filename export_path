@@ -1,0 +1,2 @@
+echo "export PATH=/Applications/MAMP/bin/php/php7.1.18/bin:$PATH" >> ~/.profile 
+. ~/.profile
