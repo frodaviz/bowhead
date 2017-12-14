@@ -106,13 +106,13 @@ trait Signals
         $lines['top'] = '';
         $output = '';
         foreach($instruments as $instrument) {
-            $lines['top'] .= str_pad($instrument, 10);
+            $lines['top'] .= str_pad($instrument, 20);
             foreach($inds as $ind) {
                 if(!isset($lines[$ind])){
                     $lines[$ind] = '';
                 }
                 $color = ($symbollines[$instrument][$ind] > 0 ? 'bg_green' : ($symbollines[$instrument][$ind] < 0 ? 'bg_red' : 'bg_black'));
-                $lines[$ind] .= $console->colorize(str_pad($ind, 10), $color);
+                $lines[$ind] .= $console->colorize(str_pad($ind, 20), $color);
             }
         }
         echo "\n".@$lines['top'];
