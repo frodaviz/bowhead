@@ -89,9 +89,9 @@ class BittrexPoolCommand extends Command
                     $this->markOHLCBittrex($data[0], $instrument);
                     sleep(1);
                 }
-            } catch
-            (Exception $e) {
+            } catch (\Exception $e) {
                 echo 'Caught exception: ', $e->getMessage(), "\nContinuing execution\n";
+                sleep(2);
             }
         }
     }
