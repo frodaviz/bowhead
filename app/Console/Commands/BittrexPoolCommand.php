@@ -5,8 +5,8 @@ namespace Bowhead\Console\Commands;
 use Bowhead\Traits\OHLC;
 use Bowhead\Util\BittrexAPIv1Client;
 use Bowhead\Util\BittrexAPIv2Client;
+use Datetime;
 use Illuminate\Console\Command;
-use \Datetime;
 
 
 /**
@@ -67,24 +67,31 @@ class BittrexPoolCommand extends Command
 
         echo "going to the endless loop\n";
         while (1) {
-            foreach ($instruments as $instrument) {
-                $data = $bittrex2->getLatestTick($instrument);
-                $dataLive = $bittrex->getTicker($instrument);
+            try {
+
+                foreach ($instruments as $instrument) {
+                    $data = $bittrex2->getLatestTick($instrument);
+                    sleep(1);
+                    $dataLive = $bittrex->getTicker($instrument);
 //                print_r($data);
 //                print_r($dataLive);
-                $dataLive->T=(new DateTime())->format('Y-m-dTH:i:s');
-                $dataLive->C=$dataLive->Last;
-                $dataLive->O=$data[0]->O;
-                $dataLive->H=$data[0]->H;
-                $dataLive->L=$data[0]->L;
-                $dataLive->BV=$data[0]->BV;
+                    $dataLive->T = (new DateTime())->format('Y-m-dTH:i:s');
+                    $dataLive->C = $dataLive->Last;
+                    $dataLive->O = $data[0]->O;
+                    $dataLive->H = $data[0]->H;
+                    $dataLive->L = $data[0]->L;
+                    $dataLive->BV = $data[0]->BV;
 //                print_r($data);
 //                print_r($dataLive);
-                print " ".$data[0]->T." ".$instrument." ".$data[0]->C."\n";
-                print " ".$dataLive->T." ".$instrument." ".$dataLive->C."\n\n";
-                $this->markOHLCBittrex($dataLive, $instrument);
-                $this->markOHLCBittrex($data[0], $instrument);
-                sleep(2);
+                    print " " . $data[0]->T . " " . $instrument . " " . $data[0]->C . "\n";
+                    print " " . $dataLive->T . " " . $instrument . " " . $dataLive->C . "\n\n";
+                    $this->markOHLCBittrex($dataLive, $instrument);
+                    $this->markOHLCBittrex($data[0], $instrument);
+                    sleep(1);
+                }
+            } catch
+            (Exception $e) {
+                echo 'Caught exception: ', $e->getMessage(), "\nContinuing execution\n";
             }
         }
     }
