@@ -21,13 +21,13 @@ trait OHLC
     {
         $instrument = 'BITTREX-' . $pair;
         $timeid = date_format(date_create($ticker->T), 'YmdHis');
-
+        $timeid=$timeid/100*100;//remove seconds
         $ins = \DB::insert("
             INSERT INTO bowhead_ohlc_1m
             (`instrument`, `timeid`, `open`, `high`, `low`, `close`, `volume`)
             VALUES
             ('$instrument', $timeid, $ticker->O, $ticker->H, $ticker->L, $ticker->C, $ticker->BV)
-            ON DUPLICATE KEY UPDATE `high`=VALUES(`high`);
+            ON DUPLICATE KEY UPDATE `high`=$ticker->H, `low`=$ticker->L, `close`=$ticker->C, `volume`=$ticker->BV;
             ");
 //        $tickerOHLC = array("timeid" => $timeid, 7 => $ticker->L, 8 => $ticker->BV);
 //        $this->markOHLC($tickerOHLC, 1, $pair);
@@ -475,7 +475,7 @@ trait OHLC
             } else {
                 /** Check for missing periods **/
                 if ($periodSize == '1m') {
-                    $variance = (int)200;
+                    $variance = (int)190;
                 } else if ($periodSize == '5m') {
                     $variance = (int)375;
                 } else if ($periodSize == '15m') {
@@ -490,7 +490,7 @@ trait OHLC
 //                echo 'Past Time is ' . $ptime . ' and current time is ' . $ftime . "\n";
                 $periodcheck = $ptime - $ftime;
                 if ((int)$periodcheck > (int)$variance) {
-//                    echo 'YOU HAVE ' . $validperiods . ' PERIODS OF VALID PRICE DATA OUT OF ' . $limit . '. Please ensure price sync is running and wait for additional data to be logged before trying again. Additionally you could use a smaller time period if available.' . "\n";
+                    echo $pair.' YOU HAVE ' . $validperiods . ' PERIODS OF VALID PRICE DATA OUT OF ' . $limit . '. Please ensure price sync is running and wait for additional data to be logged before trying again. Additionally you could use a smaller time period if available.' . "\n";
 //                    die();
                 }
                 $validperiods++;
